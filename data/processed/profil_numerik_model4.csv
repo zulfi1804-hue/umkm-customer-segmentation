@@ -1,0 +1,7 @@
+,umur,umur,jumlah_transaksi_6bln,jumlah_transaksi_6bln,total_belanja_rp,total_belanja_rp,hari_sejak_transaksi_terakhir,hari_sejak_transaksi_terakhir,persen_pakai_promo,persen_pakai_promo,rating_rata,rating_rata,lama_bergabung_hari,lama_bergabung_hari
+,mean,median,mean,median,mean,median,mean,median,mean,median,mean,median,mean,median
+cluster,,,,,,,,,,,,,,
+0,26.98,27.0,10.93,11.0,348541.33,337800.0,12.2,12.0,81.54,82.0,4.37,4.4,462.82,463.0
+1,27.43,27.0,2.56,3.0,107158.09,98200.0,109.61,110.0,34.64,35.0,3.64,3.6,456.09,448.5
+2,27.39,28.0,27.88,28.0,1353954.09,1313000.0,5.15,5.0,19.66,20.0,4.38,4.4,467.0,465.0
+3,37.78,38.0,4.1,4.0,1093768.56,1021300.0,30.66,30.0,12.56,12.0,4.38,4.4,470.58,475.0
