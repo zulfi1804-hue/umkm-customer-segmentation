@@ -471,7 +471,7 @@ with kiri:
         tanggal_daftar = st.date_input(
             "Tanggal bergabung",
             value=date(2025, 9, 1),
-            max_value=date(2026, 6, 30),
+            max_value=date(2026, 12, 31),
             format="DD/MM/YYYY",
         )
 
