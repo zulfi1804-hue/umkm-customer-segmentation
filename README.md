@@ -1,48 +1,51 @@
-# UMKM Customer Segmentation
+# Segmentasi Pelanggan UMKM (UMKM Customer Segmentation)
 
-## Project Overview
+## 1. Gambaran Umum Proyek
 
-This project applies unsupervised machine learning to segment customers of a small and medium-sized enterprise (UMKM) in the bakery and coffee business in Bandung, Indonesia.
+Proyek ini menerapkan teknik *Unsupervised Machine Learning* untuk melakukan segmentasi pelanggan pada sebuah UMKM yang bergerak di bidang bakery dan kopi di Bandung, Indonesia.
 
-The objective is to identify customer purchasing behavior, group customers into meaningful segments, and provide targeted marketing strategies for each segment.
+Tujuan proyek ini adalah mengidentifikasi pola perilaku pembelian pelanggan, mengelompokkan pelanggan ke dalam beberapa segmen berdasarkan karakteristiknya, serta memberikan rekomendasi strategi pemasaran yang sesuai untuk setiap segmen.
 
-The final model uses **K-Means Clustering with 4 clusters** and is integrated into an interactive Streamlit application to predict the segment of new customers.
+Model akhir menggunakan algoritma **K-Means Clustering dengan 4 cluster** dan diintegrasikan ke dalam aplikasi Streamlit interaktif untuk memprediksi segmen pelanggan baru.
 
-## Business Problem
+## 2. Permasalahan Bisnis
 
-The UMKM currently provides similar promotional offers to all customers, even though customers have different purchasing behaviors and preferences.
+UMKM saat ini memberikan penawaran promosi yang relatif sama kepada seluruh pelanggan, padahal setiap pelanggan memiliki perilaku dan kebiasaan pembelian yang berbeda.
 
-This project addresses the problem by:
-- Identifying distinct customer segments based on purchasing behavior.
-- Understanding the characteristics of each segment.
-- Providing suitable marketing recommendations for each segment.
-- Developing an application that can assign new customers to the identified segments.
+Proyek ini bertujuan meningkatkan efektivitas pemasaran dengan cara:
 
-## Dataset
+- Mengidentifikasi kelompok pelanggan berdasarkan perilaku pembelian.
+- Memahami karakteristik masing-masing segmen pelanggan.
+- Memberikan rekomendasi strategi pemasaran yang sesuai untuk setiap segmen.
+- Mengembangkan aplikasi yang dapat menentukan segmen pelanggan baru berdasarkan data yang dimasukkan.
 
-The dataset contains 10,000 unique customer records with registration information and transaction summaries from the previous six months.
+## 3. Dataset
 
-The dataset includes information such as:
-- Customer age and registration date.
-- Main purchasing channel.
-- Payment method and favorite product category.
-- Number of transactions in the last six months.
-- Total customer spending.
-- Days since the last transaction.
-- Percentage of transactions using promotions.
-- Average customer rating.
+Dataset berisi 10.000 data pelanggan unik yang mencakup informasi pendaftaran dan ringkasan transaksi selama enam bulan terakhir.
 
-Customer identifiers and registration dates are used for data management and feature engineering. The final clustering model uses six numerical features.
+Informasi dalam dataset meliputi:
 
-## Machine Learning Approach
+- Usia dan tanggal pendaftaran pelanggan.
+- Kanal pembelian utama.
+- Metode pembayaran dan kategori produk favorit.
+- Jumlah transaksi selama enam bulan terakhir.
+- Total nilai belanja pelanggan.
+- Jumlah hari sejak transaksi terakhir.
+- Persentase penggunaan promosi.
+- Rata-rata rating pelanggan.
 
-This project uses **Unsupervised Learning**, specifically clustering, because the dataset does not contain predefined customer segment labels.
+ID pelanggan dan tanggal pendaftaran digunakan untuk pengelolaan data serta rekayasa fitur (*feature engineering*). Model clustering akhir menggunakan enam fitur numerik.
+
+## 4. Pendekatan Machine Learning
+
+Proyek ini menggunakan pendekatan *Unsupervised Learning*, khususnya clustering, karena dataset tidak memiliki label segmen pelanggan yang telah ditentukan sebelumnya.
 
 ### K-Means Clustering
 
-K-Means was selected as the main clustering algorithm and used in four feature-selection experiments.
+Algoritma K-Means digunakan sebagai metode utama clustering dan diuji melalui empat eksperimen dengan kombinasi pemilihan fitur yang berbeda.
 
-The final model uses six numerical features:
+Model final menggunakan enam fitur numerik:
+
 1. `jumlah_transaksi_6bln`
 2. `total_belanja_rp`
 3. `hari_sejak_transaksi_terakhir`
@@ -50,95 +53,97 @@ The final model uses six numerical features:
 5. `rating_rata`
 6. `lama_bergabung_hari`
 
-The final model was selected based on internal clustering evaluation metrics and the interpretability of its customer segments.
+Model akhir dipilih berdasarkan hasil evaluasi metrik clustering internal serta kemudahan interpretasi karakteristik setiap segmen pelanggan.
 
-### Model Evaluation
+### Evaluasi Model
 
-The final model uses **K = 4** and achieved the following results:
+Model final menggunakan K = 4 dan menghasilkan nilai evaluasi sebagai berikut:
 
-| Evaluation Metric | Result |
+| Metrik Evaluasi | Hasil |
 |---|---:|
-| Silhouette Score | 0.3696 |
-| Davies-Bouldin Index | 1.1289 |
-| Calinski-Harabasz Index | 5660.67 |
-| Number of Clusters | 4 |
+| Silhouette Score | 0,3696 |
+| Davies-Bouldin Index | 1,1289 |
+| Calinski-Harabasz Index | 5660,67 |
+| Jumlah Cluster | 4 |
 
-The results indicate that the selected model provides a reasonable separation of customer groups and produces interpretable segments for business use.
+Hasil tersebut menunjukkan bahwa model terpilih memiliki pemisahan kelompok pelanggan yang cukup baik dan menghasilkan segmen yang dapat diinterpretasikan untuk kebutuhan bisnis.
 
-## Customer Segmentation Results
+## 5. Hasil Segmentasi Pelanggan
 
-The final K-Means model identifies four customer segments:
+Model K-Means final menghasilkan empat segmen pelanggan:
 
-### Cluster 1 — Active and Promotion-Responsive Customers
+### Cluster 1 — Pelanggan Aktif dan Responsif terhadap Promo
 
-- Number of customers: 2,497 (24.97%)
-- Average transactions: 10.93
-- Average spending: Rp348,541
-- Average days since last transaction: 12.20
-- Promotion usage: 81.54%
+- Jumlah pelanggan: 2.497 (24,97%)
+- Rata-rata transaksi: 10,93 kali
+- Rata-rata total belanja: Rp348.541
+- Rata-rata hari sejak transaksi terakhir: 12,20 hari
+- Rata-rata penggunaan promo: 81,54%
 
-**Business Recommendation:**
+**Rekomendasi Strategi Bisnis:**
 
-Provide next-purchase vouchers, bread and coffee bundle promotions, and loyalty stamp programs.
+Memberikan voucher untuk pembelian berikutnya, promo bundling roti dan kopi, serta program loyalty stamp.
 
-### Cluster 2 — Inactive / At-Risk Customers
+### Cluster 2 — Pelanggan Tidak Aktif / Berisiko Churn
 
-- Number of customers: 2,966 (29.66%)
-- Average transactions: 2.56
-- Average spending: Rp107,158
-- Average days since last transaction: 109.61
-- Promotion usage: 34.64%
+- Jumlah pelanggan: 2.966 (29,66%)
+- Rata-rata transaksi: 2,56 kali
+- Rata-rata total belanja: Rp107.158
+- Rata-rata hari sejak transaksi terakhir: 109,61 hari
+- Rata-rata penggunaan promo: 34,64%
 
-**Business Recommendation:**
+**Rekomendasi Strategi Bisnis:**
 
-Run win-back campaigns, offer customers their favorite products, and conduct customer satisfaction surveys.
+Melakukan kampanye win-back, memberikan penawaran produk favorit pelanggan, serta mengirimkan survei kepuasan pelanggan.
 
-### Cluster 3 — High-Value Loyal Customers
+### Cluster 3 — Pelanggan Loyal Bernilai Tinggi
 
-- Number of customers: 3,023 (30.23%)
-- Average transactions: 27.88
-- Average spending: Rp1,353,954
-- Average days since last transaction: 5.15
-- Promotion usage: 19.66%
+- Jumlah pelanggan: 3.023 (30,23%)
+- Rata-rata transaksi: 27,88 kali
+- Rata-rata total belanja: Rp1.353.954
+- Rata-rata hari sejak transaksi terakhir: 5,15 hari
+- Rata-rata penggunaan promo: 19,66%
 
-**Business Recommendation:**
+**Rekomendasi Strategi Bisnis:**
 
-Provide VIP rewards, early access to new menu items, and customer appreciation programs without relying heavily on discounts.
+Memberikan reward VIP, akses lebih awal terhadap menu baru, serta program apresiasi pelanggan tanpa terlalu bergantung pada diskon.
 
-### Cluster 4 — Occasional High-Spending Customers
+### Cluster 4 — Pelanggan Sesekali dengan Belanja Tinggi
 
-- Number of customers: 1,514 (15.14%)
-- Average transactions: 4.10
-- Average spending: Rp1,093,769
-- Average days since last transaction: 30.66
-- Promotion usage: 12.56%
+- Jumlah pelanggan: 1.514 (15,14%)
+- Rata-rata transaksi: 4,10 kali
+- Rata-rata total belanja: Rp1.093.769
+- Rata-rata hari sejak transaksi terakhir: 30,66 hari
+- Rata-rata penggunaan promo: 12,56%
 
-**Business Recommendation:**
+**Rekomendasi Strategi Bisnis:**
 
-Offer premium packages, birthday cakes, snack packs, and pre-order reminders.
+Menawarkan paket premium, kue ulang tahun, snack pack, serta pengingat untuk melakukan pre-order.
 
-## Project Workflow
+## 6. Alur Pengerjaan Proyek
+
+Tahapan pengerjaan proyek meliputi:
 
 1. Exploratory Data Analysis (EDA)
-2. Data Cleaning
-3. Feature Engineering
-4. Data Preprocessing
-5. K-Means Clustering Experiments
-6. Model Evaluation and Selection
-7. Customer Profiling
-8. Business Recommendation Development
-9. Model Saving and Testing
-10. Streamlit Application Development and Deployment
+2. Pembersihan Data (*Data Cleaning*)
+3. Rekayasa Fitur (*Feature Engineering*)
+4. Pra-pemrosesan Data (*Data Preprocessing*)
+5. Eksperimen Clustering K-Means
+6. Evaluasi dan Pemilihan Model
+7. Profiling Pelanggan
+8. Penyusunan Rekomendasi Strategi Bisnis
+9. Penyimpanan dan Pengujian Model
+10. Pengembangan dan Deployment Aplikasi Streamlit
 
-## Streamlit Application
+## 7. Aplikasi Streamlit
 
-The final model is integrated into an interactive application that allows users to enter customer information and receive a predicted customer segment with a corresponding business recommendation.
+Model final diintegrasikan ke dalam aplikasi interaktif yang memungkinkan pengguna memasukkan informasi pelanggan dan memperoleh hasil prediksi segmen beserta rekomendasi strategi bisnis yang sesuai.
 
-**Application Link:**
+**Link Aplikasi:**
 
-[UMKM Customer Segmentation — Streamlit App](https://umkm-customer-segmentation.streamlit.app/)
+[UMKM Customer Segmentation — Buka Aplikasi](https://umkm-customer-segmentation.streamlit.app/)
 
-## Repository Structure
+## 8. Struktur Repository
 
 ```text
 umkm-customer-segmentation/
@@ -158,45 +163,42 @@ umkm-customer-segmentation/
 └── README.md
 ```
 
-## Installation and Usage
+## 9. Instalasi dan Cara Menjalankan Aplikasi
 
-### 1. Clone the Repository
+### 1. Clone Repository
 
 ```bash
 git clone https://github.com/zulfi1804-hue/umkm-customer-segmentation.git
 cd umkm-customer-segmentation
 ```
 
-### 2. Create a Virtual Environment
+### 2. Membuat Virtual Environment
 
 ```bash
 python -m venv .venv
 ```
 
-Activate the environment:
-
-**Windows (Git Bash):**
+Aktifkan environment menggunakan Git Bash pada Windows:
 
 ```bash
 source .venv/Scripts/activate
 ```
 
-### 3. Install Dependencies
+### 3. Instalasi Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 4. Run the Streamlit Application
+### 4. Menjalankan Aplikasi Streamlit
 
 ```bash
 python -m streamlit run app/app.py
 ```
 
-The application will open in your browser.
+Aplikasi akan terbuka melalui browser.
 
-## Team Members
+## 10. Anggota Kelompok
 
-- Member 1 — [Atsnaina Habibah]
-- Member 2 — [Kholistyani Zulfi]
-
+- Anggota 1 — Atsnaina Habibah
+- Anggota 2 — Kholistyani Zulfi
