@@ -10,3 +10,4 @@ ipykernel
 streamlit==1.67.0
 joblib==1.6.0
 openpyxl
+pytest
