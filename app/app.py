@@ -541,7 +541,7 @@ with kanan:
             f'<div class="result-card" style="box-shadow:6px 6px 0 {warna};">'
             f'<div class="result-ico">{ikon(ikon_segmen[cl], 72)}</div>'
             '<div class="result-head">'
-            f'<div class="badge" style="background:{warna};color:{teks_badge};">Cluster {cl}</div>'
+            f'<div class="badge" style="background:{warna};color:{teks_badge};">Cluster {cl + 1}</div>'
             f'<div class="result-name">{nama_segmen[cl]}</div>'
             "</div>"
             f'<p class="result-desc">{info["karakteristik"]}</p>'
