@@ -2,6 +2,7 @@ import base64
 import streamlit as st
 import pandas as pd
 import joblib
+import numpy as np
 from pathlib import Path
 from datetime import date
 
@@ -327,6 +328,17 @@ try:
     scaler = paket_model["scaler"]
     fitur = paket_model["fitur"]
 
+    # Kolom yang di-log1p saat training (harus sama dengan notebook).
+    # Jika paket model menyimpan "kolom_log", itu yang dipakai.
+    kolom_log = paket_model.get(
+        "kolom_log",
+        [
+            "jumlah_transaksi_6bln",
+            "total_belanja_rp",
+            "hari_sejak_transaksi_terakhir",
+        ],
+    )
+
 except Exception as e:
     st.error(f"Gagal memuat model: {e}")
     st.stop()
@@ -485,9 +497,14 @@ if tombol_prediksi:
     }])
 
     # Mengikuti urutan fitur saat training
-    data_baru = data_baru[fitur]
+    data_baru = data_baru[fitur]  # tetap angka asli, untuk ditampilkan
 
-    data_scaled = scaler.transform(data_baru)
+    # Samakan dengan training: kolom skewed di-log1p SEBELUM scaling
+    data_model = data_baru.copy().astype(float)
+    kolom_log_dipakai = [k for k in kolom_log if k in data_model.columns]
+    data_model[kolom_log_dipakai] = np.log1p(data_model[kolom_log_dipakai])
+
+    data_scaled = scaler.transform(data_model)
     hasil_cluster = int(model.predict(data_scaled)[0])
 
     st.session_state["hasil"] = {"cluster": hasil_cluster, "data": data_baru}
